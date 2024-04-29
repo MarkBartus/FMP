@@ -27,12 +27,12 @@ public class Movement : MonoBehaviour
     bool attacking;
     public float spin = 2f;
     bool readyToSpin = true;
-    public float attackingCooldown = 2f;
+    public float attackingCooldown = 3f;
 
 
     private void Start()
     {
-        
+
         anim = GetComponent<Animator>();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -47,6 +47,8 @@ public class Movement : MonoBehaviour
 
         speed = 4;
 
+
+
     }
     private void ResetJump()
     {
@@ -55,20 +57,19 @@ public class Movement : MonoBehaviour
 
     void Attack()
     {
+
         anim.SetBool("attack1", false);
         anim.SetBool("attack2", false);
-        
+        combatMode = false;
+
 
         if (Input.GetKey(KeyCode.Q))
         {
-            
+
             combatMode = true;
-        
+
         }
-        else
-        {
-            combatMode = false;          
-        }
+
 
         if (Input.GetKey(KeyCode.Mouse0) && combatMode == true)
         {
@@ -105,17 +106,17 @@ public class Movement : MonoBehaviour
         }
         if (attacking == false)
         {
-            
+
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
                 {
-
+                    anim.SetBool("walk", false);
                     anim.SetBool("Run", true);
                     speed = 6;
 
-                  
+
 
                     if (Input.GetButtonDown("Jump") && isGrounded && (Input.GetKey(KeyCode.LeftShift) && readyToJump))
                     {
@@ -131,13 +132,14 @@ public class Movement : MonoBehaviour
                     }
                 }
             }
-           
+
             IEnumerator CoolDownFunction()
             {
                 readyToJump = false;
                 yield return new WaitForSeconds(jumpCooldown);
                 readyToJump = true;
             }
+
             if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.LeftShift))
             {
                 anim.SetBool("walk", true);
@@ -156,7 +158,6 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift))
             {
                 anim.SetBool("walk", true);
-
 
             }
 
@@ -187,7 +188,7 @@ public class Movement : MonoBehaviour
 
         }
 
-        
+
 
     }
 }
