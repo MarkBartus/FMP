@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     bool attacking;
     public float spin = 2f;
     bool readyToSpin = true;
-    public float attackingCooldown = 3f;
+    public float attackingCooldown = 2f;
 
 
     private void Start()
