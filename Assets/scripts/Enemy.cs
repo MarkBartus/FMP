@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] float health = 3;
+    public float currentHealth;
+    public enemyHealhBar enemyhealhBar;
+
     [SerializeField] GameObject hitVFX;
     [SerializeField] GameObject ragdoll;
 
@@ -22,6 +25,7 @@ public class Enemy : MonoBehaviour
     float timePassed;
     float newDestinationCD = 0.5f;
     Transform target;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,9 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
+        currentHealth = health;
+        enemyhealhBar.SetHealth(currentHealth);
     }
     
     void Update()
@@ -86,10 +93,16 @@ public class Enemy : MonoBehaviour
     
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
+        currentHealth -= damageAmount;
+        enemyhealhBar.SetHealth(currentHealth);
+
         anim.SetTrigger("damage");
 
-        if (health < 0)
+        if (health  <= 0)
+        {
+            Die();
+        }
+        else if ( currentHealth <= 0 )
         {
             Die();
         }

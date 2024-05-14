@@ -7,19 +7,30 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] public float health = 10;
     [SerializeField] GameObject hitVFX;
     Animator anim;
+    public float currentHealth;
+    public HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = health;
+        healthBar.SetMaxHealth(health);
+
         anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
+        currentHealth -= damageAmount;
+        healthBar.SetHealth(currentHealth);
 
         if ( health < 0 )
         {
 
+            Die();
+        }
+        else if (currentHealth <= 0)
+        {
             Die();
         }
     }

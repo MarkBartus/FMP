@@ -60,30 +60,16 @@ public class Movement : MonoBehaviour
 
         anim.SetBool("attack1", false);
         anim.SetBool("attack2", false);
-        combatMode = false;
+     
 
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-
-            combatMode = true;
-
-        }
-
-
-        if (Input.GetKey(KeyCode.Mouse0) && combatMode == true)
+        if (Input.GetKey(KeyCode.Mouse0))
         {
 
             anim.SetBool("attack1", true);
-            StartCoroutine(CoolDownFunction2());
+            
         }
 
-        IEnumerator CoolDownFunction2()
-        {
-            attacking = true;
-            yield return new WaitForSeconds(attackingCooldown);
-            attacking = false;
-        }
 
     }
 
@@ -93,7 +79,8 @@ public class Movement : MonoBehaviour
         anim.SetBool("Run", false);
         anim.SetBool("jrun", false);
         anim.SetBool("attack2", false);
-        if (Input.GetKey(KeyCode.C) && readyToSpin)
+
+        if (Input.GetKey(KeyCode.Mouse1) && readyToSpin)
         {
             anim.SetBool("attack2", true);
             StartCoroutine(CoolDownFunction1());
