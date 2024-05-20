@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - NPC
   - Canvas
+  - currency
+  - Currency
   layers:
   - Default
   - TransparentFX

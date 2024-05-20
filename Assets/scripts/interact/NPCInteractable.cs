@@ -6,7 +6,7 @@ public class NPCInteractable : MonoBehaviour
 {
     [SerializeField] private string interactText;
     [SerializeField] private GameObject questLineGameObject;
-    
+
 
     public void Interact()
     {
@@ -14,10 +14,10 @@ public class NPCInteractable : MonoBehaviour
         questLineGameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        Time.timeScale = 0;
-    }
-    
-  
+        Time.timeScale = 0;   
+    }  
+
+
     public string GetInteractText()
     {
         return interactText;

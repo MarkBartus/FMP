@@ -34,7 +34,7 @@ public class PlayerIneract : MonoBehaviour
             }
         }
     }
-
+    
     public NPCInteractable GetInteractableObject()
     {
         List<NPCInteractable> npcInteractablesList = new List<NPCInteractable>();
@@ -68,6 +68,7 @@ public class PlayerIneract : MonoBehaviour
         return closestNPCInteractable;
 
     }
+    
     
     public NPCInteractable2 GetInteractableObject2()
     {

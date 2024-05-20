@@ -24,14 +24,20 @@ public class HealthSystem : MonoBehaviour
         currentHealth -= damageAmount;
         healthBar.SetHealth(currentHealth);
 
-        if ( health < 0 )
+       
+        if (currentHealth <= 0)
         {
-
             Die();
         }
-        else if (currentHealth <= 0)
+    }
+
+    public void use()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && currentHealth < 9 && Currency.Instance.hp > 0)
         {
-            Die();
+            Currency.Instance.hp --;
+            currentHealth += 2;
+            healthBar.SetHealth(currentHealth);
         }
     }
 
@@ -49,6 +55,6 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        use();
     }
 }

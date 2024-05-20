@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
 
+    public QuestGoal QuestLine1;
+    public int reward = 100;
     [SerializeField] float health = 3;
     public float currentHealth;
     public enemyHealhBar enemyhealhBar;
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+       
 
         currentHealth = health;
         enemyhealhBar.SetHealth(currentHealth);
@@ -67,6 +70,8 @@ public class Enemy : MonoBehaviour
 
 
         FaceTarget();
+        
+   
     }
     
     void FaceTarget()
@@ -98,15 +103,15 @@ public class Enemy : MonoBehaviour
 
         anim.SetTrigger("damage");
 
-        if (health  <= 0)
+       
+        if ( currentHealth <= 0 )
         {
-            Die();
+            
+            Die();          
         }
-        else if ( currentHealth <= 0 )
-        {
-            Die();
-        }
+        
     }
+  
 
     public void StartDealDamage()
     {
@@ -118,6 +123,8 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
+        Currency.Instance.currentAmount += 1;
+        Currency.Instance.gold += 100;
         Instantiate(ragdoll, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
