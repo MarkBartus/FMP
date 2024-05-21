@@ -38,7 +38,7 @@ public class PlayerIneract : MonoBehaviour
     public NPCInteractable GetInteractableObject()
     {
         List<NPCInteractable> npcInteractablesList = new List<NPCInteractable>();
-        float interactRange = 4f;
+        float interactRange = 3f;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
         foreach (Collider collider in colliderArray)
         {
@@ -73,7 +73,7 @@ public class PlayerIneract : MonoBehaviour
     public NPCInteractable2 GetInteractableObject2()
     {
         List<NPCInteractable2> npcInteractablesList = new List<NPCInteractable2>();
-        float interactRange = 4f;
+        float interactRange = 3f;
         Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
         foreach (Collider collider in colliderArray)
         {

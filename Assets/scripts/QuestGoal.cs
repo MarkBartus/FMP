@@ -10,7 +10,7 @@ public class QuestGoal : MonoBehaviour
     [SerializeField] private GameObject questLineGameObject;
     [SerializeField] private GameObject questLineGameObject1;
     [SerializeField] private GameObject claim;
-    private int requiredAmount = 2;
+    private int requiredAmount = 4;
     
 
     public void Update()
