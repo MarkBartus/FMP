@@ -20,9 +20,14 @@ public class Currency : MonoBehaviour
     [SerializeField] public TextMeshProUGUI currency;
 
     [SerializeField] public TextMeshProUGUI hpPotions;
+
+    [SerializeField] public TextMeshProUGUI counter;
+
     public int hp;
 
     public int currentAmount;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +40,7 @@ public class Currency : MonoBehaviour
     {
         currency.text = gold.ToString();
         hpPotions.text = hp.ToString();
+        counter.text = currentAmount.ToString();
 
         if(hp > 3)
         {

@@ -3794,9 +3794,12 @@ MonoBehaviour:
   playSource: {fileID: 1589774038}
   musicSource1: {fileID: 1246406999}
   menu: {fileID: 8300000, guid: 3bf624c2b9405d443b6f78b43ba188d9, type: 3}
-  game: {fileID: 0}
+  game: {fileID: 8300000, guid: 0cf9c9cf64d334d4294bda52268984de, type: 3}
   Button: {fileID: 8300000, guid: 56ae45745e6f76642bcb8cd06c79743e, type: 3}
   playS: {fileID: 8300000, guid: bc17973b0c71abd468bad9dda6ccbb04, type: 3}
+  footsteps: {fileID: 8300000, guid: 369457292457748438ed968afb432ed7, type: 3}
+  slash: {fileID: 8300000, guid: e7520e8a805ce8442a8d8e035ce5d5a6, type: 3}
+  spin: {fileID: 8300000, guid: 34008cdbc817b394f9f4ec8a2508689f, type: 3}
 --- !u!4 &1025446688
 Transform:
   m_ObjectHideFlags: 0

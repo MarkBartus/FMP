@@ -29,7 +29,10 @@ public class Movement : MonoBehaviour
     bool readyToSpin = true;
     public float attackingCooldown = 2f;
 
-  
+    bool wait = true;
+
+    AudioManager audioManager;
+
     private void Start()
     {
 
@@ -37,6 +40,8 @@ public class Movement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        audioManager = GameObject.FindWithTag("Audio").GetComponent<AudioManager>();
     }
     // Update is called once per frame
     void Update()
@@ -63,13 +68,23 @@ public class Movement : MonoBehaviour
      
 
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && wait)
         {
 
             anim.SetBool("attack1", true);
-            
+
+            audioManager.PlaySFX(audioManager.slash);
+
+            StartCoroutine(CoolDownFunction2());
+
         }
 
+        IEnumerator CoolDownFunction2()
+        {
+            wait = false;
+            yield return new WaitForSeconds(1.3f);
+            wait = true;
+        }
 
     }
 
@@ -83,6 +98,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1) && readyToSpin)
         {
             anim.SetBool("attack2", true);
+            audioManager.PlaySFX(audioManager.spin);
             StartCoroutine(CoolDownFunction1());
         }
         IEnumerator CoolDownFunction1()
@@ -130,6 +146,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.LeftShift))
             {
                 anim.SetBool("walk", true);
+                
 
             }
             if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.LeftShift))

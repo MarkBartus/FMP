@@ -15,7 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip game;
     public AudioClip Button;
     public AudioClip playS;
-    
+    public AudioClip footsteps;
+    public AudioClip slash;
+    public AudioClip spin;
+
     public static AudioManager instance;
     
     bool musicPlaying;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -44,7 +45,8 @@ public class HealthSystem : MonoBehaviour
     void Die()
     {
         anim.SetTrigger("dead");
-        Destroy(this.gameObject,5f);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }   
     public void HitVFX(Vector3 hitPosition)
     {
